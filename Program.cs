@@ -4,6 +4,7 @@ Game_Engine ge = new Game_Engine();
 
 bool validSubmission = true;
 bool gameOver = false;
+int position = 0;
 
 // Welcome the user to the game
 Console.WriteLine("Welcome to Tic Tac Toe!");
@@ -24,47 +25,73 @@ do
 {
     //ge.printBoard(board);
 
-    Console.WriteLine($"{player1} (x), please select a position (0-8).");
-
-    int position = int.Parse(Console.ReadLine());
+   
 
     // Check to make sure it is a valid submission
-
+    
     do
     {
+        Console.WriteLine($"{player1} (x), please select a position (0-8).");
+        
+        position = int.Parse(Console.ReadLine());
+        
+        validSubmission = true;
         if (position > 8 || position < 0)
         {
             Console.WriteLine("Please select a valid position 0-8.");
-            break;
 
             validSubmission = false;
         }
+
+        if (board[position] == 'X' || board[position] == 'O')
+        {
+            Console.WriteLine("That space is taken. Choose another.");
+            validSubmission = false;
+        }
     } while (!validSubmission);
+
+    board[position] = 'X';
+    
+    Console.WriteLine(board);
 
     //ge.checkBoard()
 
     //ge.printBoard(board);
 
-    Console.WriteLine($"{player2} (x), please select a position (0-8).");
-
-    position = int.Parse(Console.ReadLine());
+    
 
     // Check to make sure it is a valid submission
 
     do
     {
+        Console.WriteLine($"{player2} (o), please select a position (0-8).");
+
+        position = int.Parse(Console.ReadLine());
+        
+        validSubmission = true;
         if (position > 8 || position < 0)
         {
             Console.WriteLine("Please select a valid position 0-8.");
-            break;
 
             validSubmission = false;
         }
+        if (board[position] == 'X' || board[position] == 'O')
+        {
+            Console.WriteLine("That space is taken. Choose another.");
+            validSubmission = false;
+        }
     } while (!validSubmission);
+    
+    board[position] = 'O';
+    Console.WriteLine(board);
 
-    //ge.checkBoard()
+    //ge.checkBoard(board, player1, player2)
 
 } while (!gameOver);
+
+Console.WriteLine("Thanks for playing!");
+
+Console.WriteLine("Do you want to play again? Y/N");
 
 
 
