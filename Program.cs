@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿// Welcome the user to the game
 
 // Create a game board array to store the player's choices
@@ -8,7 +7,6 @@
 //Prin the board by calling the method in the supporting class
 
 //Check for a winner by calling the mehtod in the supporting class, and notify the players when a win has 
-=======
 ﻿using Tic_Tac_Toe;
 
 Game_Engine ge = new Game_Engine();
@@ -154,5 +152,4 @@ do
 
 
 //Check for a winner by calling the method in the supporting class, and notify the players when a win has 
->>>>>>> layton
 // occured and which player won the game
