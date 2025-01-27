@@ -5,6 +5,7 @@ Game_Engine ge = new Game_Engine();
 bool validSubmission = true;
 bool gameOver = false;
 int position = 0;
+var result = "";
 bool playAgain = false;
 string again = "";
 
@@ -55,6 +56,14 @@ do
             }
         } while (!validSubmission);
 
+    board[position] = 'X';
+    
+    Console.WriteLine(board);
+    
+    
+    
+
+    //ge.printBoard(board);
         board[position] = 'X';
 
         Console.WriteLine(board);
@@ -63,6 +72,12 @@ do
 
         //ge.printBoard(board);
 
+    
+    ge.checkBoard(board, player1, player2);
+    gameOver = result.Item1;
+    string message = result.Item2;
+    Console.WriteLine(message);
+    // Check to make sure it is a valid submission
 
 
         // Check to make sure it is a valid submission
@@ -90,6 +105,10 @@ do
         board[position] = 'O';
         Console.WriteLine(board);
 
+    ge.checkBoard(board, player1, player2);
+    gameOver = result.Item1;
+    string message = result.Item2;
+    Console.WriteLine(message);
         //ge.checkBoard(board, player1, player2)
 
     } while (!gameOver);
