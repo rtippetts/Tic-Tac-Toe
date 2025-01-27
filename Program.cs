@@ -1,5 +1,7 @@
 ﻿// Welcome the user to the game
 
+Console.WriteLine("Welcome to Tic Tac Toe!");
+
 // Create a game board array to store the player's choices
 
 // Ask each player in turn for their choice and update the game board array
