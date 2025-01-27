@@ -1,23 +1,18 @@
 ﻿// Welcome the user to the game
-
 // Create a game board array to store the player's choices
-
 // Ask each player in turn for their choice and update the game board array
+// Print the board by calling the method in the supporting class
+// Check for a winner by calling the method in the supporting class, and notify the players when a win has occurred
 
-//Prin the board by calling the method in the supporting class
-
-//Check for a winner by calling the mehtod in the supporting class, and notify the players when a win has 
-﻿using Tic_Tac_Toe;
+using Tic_Tac_Toe;
 
 Game_Engine ge = new Game_Engine();
 
 bool validSubmission = true;
 bool gameOver = false;
 int position = 0;
-var result = "";
 bool playAgain = false;
 string again = "";
-
 
 do
 {
@@ -32,21 +27,17 @@ do
     string player2 = Console.ReadLine();
 
     // Create a game board array to store the player's choices
-
-    char[] board = { '0', '1', '2', '3', '4', '5', '6', '7', '8' };
+    string[] board = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
 
     // Ask each player in turn for their choice and update the game board array
     do
     {
-        //ge.printBoard(board);
-
-
-
-        // Check to make sure it is a valid submission
-
+        // Start player X's turn
         do
         {
-            Console.WriteLine($"{player1} (x), please select a position (0-8).");
+            // Print the current board before player X's move
+            ge.printBoard(board);
+            Console.WriteLine($"{player1} (X), please select a position (0-8).");
 
             position = int.Parse(Console.ReadLine());
 
@@ -54,46 +45,34 @@ do
             if (position > 8 || position < 0)
             {
                 Console.WriteLine("Please select a valid position 0-8.");
-
                 validSubmission = false;
             }
 
-            if (board[position] == 'X' || board[position] == 'O')
+            if (board[position] == "X" || board[position] == "O")
             {
                 Console.WriteLine("That space is taken. Choose another.");
                 validSubmission = false;
             }
+
         } while (!validSubmission);
 
-    board[position] = 'X';
-    
-    Console.WriteLine(board);
-    
-    
-    
+        // Update the board with X's move
+        board[position] = "X";
 
-    //ge.printBoard(board);
-        board[position] = 'X';
+        // Check for a winner after X's move
+        var result = ge.checkBoard(board, player1, player2);
+        gameOver = result.Item1;
+        string message = result.Item2;
+        Console.WriteLine(message);
 
-        Console.WriteLine(board);
+        if (gameOver) break; // If game over, exit the loop after X's turn
 
-        //ge.checkBoard()
-
-        //ge.printBoard(board);
-
-    
-    ge.checkBoard(board, player1, player2);
-    gameOver = result.Item1;
-    string message = result.Item2;
-    Console.WriteLine(message);
-    // Check to make sure it is a valid submission
-
-
-        // Check to make sure it is a valid submission
-
+        // Start player O's turn
         do
         {
-            Console.WriteLine($"{player2} (o), please select a position (0-8).");
+            // Print the current board before player O's move
+            ge.printBoard(board);
+            Console.WriteLine($"{player2} (O), please select a position (0-8).");
 
             position = int.Parse(Console.ReadLine());
 
@@ -101,34 +80,36 @@ do
             if (position > 8 || position < 0)
             {
                 Console.WriteLine("Please select a valid position 0-8.");
-
                 validSubmission = false;
             }
-            if (board[position] == 'X' || board[position] == 'O')
+
+            if (board[position] == "X" || board[position] == "O")
             {
                 Console.WriteLine("That space is taken. Choose another.");
                 validSubmission = false;
             }
+
         } while (!validSubmission);
 
-        board[position] = 'O';
-        Console.WriteLine(board);
+        // Update the board with O's move
+        board[position] = "O";
 
-    ge.checkBoard(board, player1, player2);
-    gameOver = result.Item1;
-    string message = result.Item2;
-    Console.WriteLine(message);
-        //ge.checkBoard(board, player1, player2)
+        // Check for a winner after O's move
+        result = ge.checkBoard(board, player1, player2);
+        gameOver = result.Item1;
+        message = result.Item2;
+        Console.WriteLine(message);
 
-    } while (!gameOver);
+    } while (!gameOver); // Repeat until the game is over
 
     Console.WriteLine("Thanks for playing!");
 
+    // Ask if the players want to play again
     do
     {
         Console.WriteLine("Do you want to play again? Y/N");
         again = Console.ReadLine().ToUpper();
-        
+
         if (again == "Y")
         {
             playAgain = true;
@@ -144,12 +125,3 @@ do
     } while (again != "Y" && again != "N");
 
 } while (playAgain == true);
-
-
-
-// Print the board by calling the method in the supporting class
-
-
-
-//Check for a winner by calling the method in the supporting class, and notify the players when a win has 
-// occured and which player won the game

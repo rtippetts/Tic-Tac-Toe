@@ -10,15 +10,17 @@ namespace Tic_Tac_Toe
     internal class Game_Engine
     {
 
-        public string printBoard(string[] ResponseArray)
+        public void printBoard(string[] ResponseArray)
         {
             string result = "";
 
-            result = ($"{ResponseArray[0]} | {ResponseArray[1]} | {ResponseArray[2]}\n----------\n{ResponseArray[3]} | {ResponseArray[4]} | {ResponseArray[5]}\n----------\n{ResponseArray[6]} | {ResponseArray[7]} | {ResponseArray[8]}");
-            return result;
+            result = ($"\n{ResponseArray[0]} | {ResponseArray[1]} | {ResponseArray[2]}\n----------\n{ResponseArray[3]} | {ResponseArray[4]} | {ResponseArray[5]}\n----------\n{ResponseArray[6]} | {ResponseArray[7]} | {ResponseArray[8]}\n\n");
+            
+            Console.WriteLine( result );
+            Console.WriteLine("\n\n");
         }
 
-        public (bool, string) checkBoard(string[] ResponseArray, string Player_1, string Player_2, bool gameOver)
+        public (bool, string) checkBoard(string[] ResponseArray, string Player_1, string Player_2)
         {
             int[][] winningCombos = new int[][]
             {
@@ -58,15 +60,15 @@ namespace Tic_Tac_Toe
 
             //check for a cat
 
-                if (ResponseArray[0] != "1" &&
-                    ResponseArray[1] != "2" &&
-                    ResponseArray[2] != "3" &&
-                    ResponseArray[3] != "4" &&
-                    ResponseArray[4] != "5" &&
-                    ResponseArray[5] != "6" &&
-                    ResponseArray[6] != "7" &&
-                    ResponseArray[7] != "8" &&
-                    ResponseArray[8] != "9")
+                if (ResponseArray[0] != "0" &&
+                    ResponseArray[1] != "1" &&
+                    ResponseArray[2] != "2" &&
+                    ResponseArray[3] != "3" &&
+                    ResponseArray[4] != "4" &&
+                    ResponseArray[5] != "5" &&
+                    ResponseArray[6] != "6" &&
+                    ResponseArray[7] != "7" &&
+                    ResponseArray[8] != "8")
                 {
                     return (true, "It's a tie!");
                 }
