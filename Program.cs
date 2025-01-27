@@ -10,6 +10,8 @@ string player1 = Console.ReadLine();
 Console.WriteLine("Player 2, please enter your name: ");
 string player2 = Console.ReadLine();
 
+Console.WriteLine("Welcome to Tic Tac Toe!");
+
 // Create a game board array to store the player's choices
 
 // Ask each player in turn for their choice and update the game board array
