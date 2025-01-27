@@ -130,7 +130,7 @@ do
         }
         else
         {
-            Console.WriteLine("Invalid Input. Please enter Y or N."
+            Console.WriteLine("Invalid Input. Please enter Y or N.");
         }
     } while (again != "Y" && again != "N");
 
