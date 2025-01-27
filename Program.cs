@@ -5,93 +5,117 @@ Game_Engine ge = new Game_Engine();
 bool validSubmission = true;
 bool gameOver = false;
 int position = 0;
+bool playAgain = false;
+string again = "";
 
-// Welcome the user to the game
-Console.WriteLine("Welcome to Tic Tac Toe!");
 
-// Ask for the players' names
-Console.WriteLine("Player 1, please enter your name: ");
-string player1 = Console.ReadLine();
-
-Console.WriteLine("Player 2, please enter your name: ");
-string player2 = Console.ReadLine();
-
-// Create a game board array to store the player's choices
-
-char[] board = { '0', '1', '2', '3', '4', '5', '6', '7', '8' };
-
-// Ask each player in turn for their choice and update the game board array
 do
 {
-    //ge.printBoard(board);
+    // Welcome the user to the game
+    Console.WriteLine("Welcome to Tic Tac Toe!");
 
-   
+    // Ask for the players' names
+    Console.WriteLine("Player 1, please enter your name: ");
+    string player1 = Console.ReadLine();
 
-    // Check to make sure it is a valid submission
-    
+    Console.WriteLine("Player 2, please enter your name: ");
+    string player2 = Console.ReadLine();
+
+    // Create a game board array to store the player's choices
+
+    char[] board = { '0', '1', '2', '3', '4', '5', '6', '7', '8' };
+
+    // Ask each player in turn for their choice and update the game board array
     do
     {
-        Console.WriteLine($"{player1} (x), please select a position (0-8).");
-        
-        position = int.Parse(Console.ReadLine());
-        
-        validSubmission = true;
-        if (position > 8 || position < 0)
+        //ge.printBoard(board);
+
+
+
+        // Check to make sure it is a valid submission
+
+        do
         {
-            Console.WriteLine("Please select a valid position 0-8.");
+            Console.WriteLine($"{player1} (x), please select a position (0-8).");
 
-            validSubmission = false;
-        }
+            position = int.Parse(Console.ReadLine());
 
-        if (board[position] == 'X' || board[position] == 'O')
+            validSubmission = true;
+            if (position > 8 || position < 0)
+            {
+                Console.WriteLine("Please select a valid position 0-8.");
+
+                validSubmission = false;
+            }
+
+            if (board[position] == 'X' || board[position] == 'O')
+            {
+                Console.WriteLine("That space is taken. Choose another.");
+                validSubmission = false;
+            }
+        } while (!validSubmission);
+
+        board[position] = 'X';
+
+        Console.WriteLine(board);
+
+        //ge.checkBoard()
+
+        //ge.printBoard(board);
+
+
+
+        // Check to make sure it is a valid submission
+
+        do
         {
-            Console.WriteLine("That space is taken. Choose another.");
-            validSubmission = false;
-        }
-    } while (!validSubmission);
+            Console.WriteLine($"{player2} (o), please select a position (0-8).");
 
-    board[position] = 'X';
-    
-    Console.WriteLine(board);
+            position = int.Parse(Console.ReadLine());
 
-    //ge.checkBoard()
+            validSubmission = true;
+            if (position > 8 || position < 0)
+            {
+                Console.WriteLine("Please select a valid position 0-8.");
 
-    //ge.printBoard(board);
+                validSubmission = false;
+            }
+            if (board[position] == 'X' || board[position] == 'O')
+            {
+                Console.WriteLine("That space is taken. Choose another.");
+                validSubmission = false;
+            }
+        } while (!validSubmission);
 
-    
+        board[position] = 'O';
+        Console.WriteLine(board);
 
-    // Check to make sure it is a valid submission
+        //ge.checkBoard(board, player1, player2)
+
+    } while (!gameOver);
+
+    Console.WriteLine("Thanks for playing!");
 
     do
     {
-        Console.WriteLine($"{player2} (o), please select a position (0-8).");
-
-        position = int.Parse(Console.ReadLine());
+        Console.WriteLine("Do you want to play again? Y/N");
+        again = Console.ReadLine().ToUpper();
         
-        validSubmission = true;
-        if (position > 8 || position < 0)
+        if (again == "Y")
         {
-            Console.WriteLine("Please select a valid position 0-8.");
-
-            validSubmission = false;
+            playAgain = true;
         }
-        if (board[position] == 'X' || board[position] == 'O')
+        else if (again == "N")
         {
-            Console.WriteLine("That space is taken. Choose another.");
-            validSubmission = false;
+            playAgain = false;
         }
-    } while (!validSubmission);
-    
-    board[position] = 'O';
-    Console.WriteLine(board);
+        else
+        {
+            Console.WriteLine("Invalid Input. Please enter Y or N."
+        }
+    } while (again != "Y" && again != "N");
 
-    //ge.checkBoard(board, player1, player2)
-
-} while (!gameOver);
-
-Console.WriteLine("Thanks for playing!");
-
-Console.WriteLine("Do you want to play again? Y/N");
+} while (playAgain == true);
 
 
 
