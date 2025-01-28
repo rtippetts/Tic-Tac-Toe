@@ -17,7 +17,6 @@ namespace Tic_Tac_Toe
             result = ($"\n{ResponseArray[0]} | {ResponseArray[1]} | {ResponseArray[2]}\n----------\n{ResponseArray[3]} | {ResponseArray[4]} | {ResponseArray[5]}\n----------\n{ResponseArray[6]} | {ResponseArray[7]} | {ResponseArray[8]}\n\n");
             
             Console.WriteLine( result );
-            Console.WriteLine("\n\n");
         }
 
         public (bool, string) checkBoard(string[] ResponseArray, string Player_1, string Player_2)
@@ -47,11 +46,13 @@ namespace Tic_Tac_Toe
                     
                     if (ResponseArray[combo[0]] == "X")
                     {
+                        printBoard(ResponseArray);
                         return (true, $"{Player_1} wins!");
                     }
 
                     if (ResponseArray[combo[0]] == "O")
                     {
+                        printBoard(ResponseArray);
                         return (true, $"{Player_2} wins!");
                     }
 
