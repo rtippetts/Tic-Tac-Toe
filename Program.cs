@@ -1,4 +1,4 @@
-﻿// Group 2-8; Spencer Layton, Rob Gardner, Spencer Davis, Rex Tippetts
+// Group 2-8; Spencer Layton, Rob Gardner, Spencer Davis, Rex Tippetts
 
 using Tic_Tac_Toe;
 

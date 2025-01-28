@@ -60,7 +60,6 @@ namespace Tic_Tac_Toe
             }
 
             //check for a cat
-
                 if (ResponseArray[0] != "0" &&
                     ResponseArray[1] != "1" &&
                     ResponseArray[2] != "2" &&
